@@ -84,7 +84,7 @@ const pegaPratoInformacoes = (index) => {
 const atualizarPrato = () => {
     btnAtualizar.style.display = 'none';
     btnAdd.style.display = 'block';
-    const url = 'http://localhost:3000/atualizar/pratos';
+    const url = 'http://localhost:3000/atualizar/prato';
     fetch(url, {
         method:"PUT",
         headers: {
