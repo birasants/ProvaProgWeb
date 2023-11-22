@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardápio</title>
+    <link rel="stylesheet" href="assets/main.css">
+</head>
+<body>
+    <header>
+        <h1>Cardápio</h1>
+    </header>
+    <main>
+        <!-- Cadastrar Prato -->
+        <form action="">
+            <div class="container-inputs">
+                <h2 style="color: #444444">Cadastrar Prato</h2>
+                <!-- Nome -->
+                <div style="display: flex; flex-direction: column; width: 40%;">
+                    <label for="nome">Nome</label>
+                    <input id="nome" type="text"/>
+                </div>
+                <!-- Ingredientes -->
+                <div style="display: flex; flex-direction: column; width: 40%;">
+                    <label for="ingredientes">Ingredientes</label>
+                    <input id="ingredientes" type="text"/>
+                </div>
+                <!-- Tipo de Prato -->
+                <div style="display: flex; flex-direction: column; width: 40%;">
+                    <label for="tipoPrato">Tipo de Prato</label>
+                    <input id="tipoPrato" type="text"/>
+                </div>
+                <button type="button" id="btn-add" onclick="adicionarPrato()" class="btn-adiciona-prato">Adicionar</button>
+                <button type="button" id="btn-atualizar" onclick="atualizarPrato()" class="btn-adiciona-prato" style="display: none;">Atualizar</button>
+            </div>
+        </form>
+        <!-- Lista de Pratos -->
+        <div style="display: flex; justify-content: center;">
+            <div class="container-lista">
+                <div style="display: flex; align-items: center; gap: 5px;">
+                    <h3>Lista</h3>
+                    <button type="button" class="btn-adiciona-prato" style="height: 25px;" onclick="listaDinamica()">Listar</button>
+                </div>
+                <div id="listando-pratos">
+                
+                </div>
+                
+            </div>
+        </div>
+    </main>
+</body>
+</html>
+
+<script src="scripts/script.js"></script>

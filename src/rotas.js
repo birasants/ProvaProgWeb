@@ -5,7 +5,7 @@ const rotas = express();
 rotas.post('/prato/cadastro',cadastrarPrato);
 rotas.get('/listar/pratos',listarPrato);
 rotas.post('/adicionar/pedidos', addPedido);
-rotas.put('/atualizar/pedidos',updatePrato)
+rotas.put('/atualizar/pratos',updatePrato)
 module.exports = {
   rotas
 }
