@@ -54,6 +54,17 @@ const adicionarPrato = async () => {
 }
 
 const removerItem = (index) => {
+    const url = `http://localhost:3000/deletar/pratos/${pratos[index].id}`;
+
+    fetch(url, {
+        method:"DELETE",
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    })
+    .then(response => {
+        return response.json();
+    })
     pratos.splice(index,1);
     nome.value = "";
     ingredientes.value = "";
