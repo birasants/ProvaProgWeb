@@ -52,12 +52,27 @@ const updatePrato = async (req,res)=>{
     RETURNING *;`,[nome,ingredientes,tipo_de_prato,id_prato]);
     return res.status(200).json(atualizar.rows[0])
   } catch (error) {
-    console.log(error);
+    return res.status(500).json({mensagem: 'Erro interno do servidor!'});
   }
+}
+
+const deletarPrato = async (req,res)=>{
+    const {id} = req.params;
+    try {
+      const deletePrato = await pool.query(`
+        delete from prato
+        where id = $1
+      returning *`,[id])
+      return res.status(200).json(deletePrato.rows[0]);
+    } catch (error) {
+      console.log(error);
+      return res.status(500).json({mensagem: 'Erro interno do servidor!'});
+    }
 }
 module.exports = {
   cadastrarPrato,
   listarPrato,
   addPedido,
-  updatePrato
+  updatePrato,
+  deletarPrato
 }
