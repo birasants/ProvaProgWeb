@@ -12,3 +12,6 @@ create table pedido(
 	data_order date,
   prato int references prato(id)
 )
+
+alter table pedido
+rename column prato to prato_id

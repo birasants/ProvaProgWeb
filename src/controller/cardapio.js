@@ -42,6 +42,22 @@ const addPedido = async (req,res)=>{
   }
 }
 
+const listarPedido = async (req,res)=>{
+  const {prato_id} = req.params
+  try {
+    const pedidoRealizado = await pool.query(`
+  select pedido.*, prato.nome as nome_do_prato
+  from prato
+  inner join pedido on prato_id = pedido.prato_id
+  where prato.id = $1
+  `,[prato_id])
+  return res.status(200).json(pedidoRealizado.rows[0])
+  } catch (error) {
+    return res.status(500).json({mensagem: 'Erro interno do servidor!'});
+  }
+  
+}
+
 const updatePrato = async (req,res)=>{
   const {id_prato,nome,ingredientes,tipo_de_prato} = req.body
   try {
@@ -74,5 +90,6 @@ module.exports = {
   listarPrato,
   addPedido,
   updatePrato,
-  deletarPrato
+  deletarPrato,
+  listarPedido
 }
