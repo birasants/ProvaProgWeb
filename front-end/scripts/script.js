@@ -25,7 +25,34 @@ const listaDinamica = () => {
      .then(data => {
         pratos.push(...data);
         pratos.map((item, index) => {
-        container.innerHTML += `<span>${item.nome} - ${item.ingredientes} - ${item.tipo_de_prato} <button class="btn-adiciona-prato" onClick="removerItem(${index})" type="button">remover</button> <button class="btn-adiciona-prato" onClick="pegaPratoInformacoes(${index})" type="button">Editar</button><span/>`
+        container.innerHTML += `<span>${item.nome} - ${item.ingredientes} - ${item.tipo_de_prato} <button class="btn-adiciona-prato" onClick="removerItem(${index})" type="button">remover</button> 
+        <button class="btn-adiciona-prato" onClick="pegaPratoInformacoes(${index})" type="button">Editar</button>
+        <button class="btn-adiciona-prato" onClick="pegaPratoInformacoes(${index})" type="button">Escolher prato</button>
+        <span/>`
+    }); 
+     });
+}
+
+const listaDinamicaPedidos = () => {
+    const container = document.getElementById("listando-pedidos");
+    pratos = [];
+    container.innerHTML = "";
+    const url = 'http://localhost:3000/listar/pratos';
+    fetch(url, {
+        method:'GET',
+        headers: {
+            'Content-Type': 'application/json', // Se a API esperar um conteúdo em JSON
+            // Adicione quaisquer outros cabeçalhos necessários aqui
+        },
+    })
+     .then(response => {
+        return response.json();
+     })
+     .then(data => {
+        pratos.push(...data);
+        pratos.map((item, index) => {
+        container.innerHTML += `<span>${item.nome} - ${item.ingredientes} - ${item.tipo_de_prato} <button class="btn-adiciona-prato" onClick="removerItem(${index})" type="button">remover</button> 
+        <span/>`
     }); 
      });
 }

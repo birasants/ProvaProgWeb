@@ -42,6 +42,7 @@ const addPedido = async (req,res)=>{
   }
 }
 
+
 const updatePrato = async (req,res)=>{
   const {id_prato,nome,ingredientes,tipo_de_prato} = req.body
   try {
